@@ -1,0 +1,36 @@
+{
+    "employeeData": [
+        {
+            "Timestamp": "12/12/2023 18:55:16",
+            "Name": "B. Udaya Kumar Shetty",
+            "Date Of Birth": "08/03/1962",
+            "What is your spouse's name?": "Sadhana U Shetty",
+            "What is your spouse's date of birth": "08/03/1968",
+            "When is your wedding anniversary?": "29/12",
+            "Address": "UVA VILLA, Prafulla Enclave, Halady Road, Koteshwar-576222, Kundapur, Udupi, Karnata",
+            "Phone number": "9448128051",
+            "Email": "ashwamed@gmail.com",
+            "Upload your passport size photo": "https://drive.google.com/open?id=1S8aLSigJdU8y_vHMP3D6JXfz0OBGeDWd",
+            "null": [
+                ""
+            ],
+            "id": 1
+        },
+        {
+            "Timestamp": "12/12/2023 18:58:15",
+            "Name": "Jaideep",
+            "Date Of Birth": "12/6/2023",
+            "What is your spouse's name?": "Rio",
+            "What is your spouse's date of birth": "12/6/2023",
+            "When is your wedding anniversary?": "12/2/2023",
+            "Address": "#89, Ethernum, CV ramanagar",
+            "Phone number": "8789765412",
+            "Email": "akhilvc2008@gmail.com",
+            "Upload your passport size photo": "https://drive.google.com/open?id=1pHefW8liOGeoo8cdJj6HwooXOObOd63H",
+            "null": [
+                ""
+            ],
+            "id": 2
+        }
+    ]
+}
