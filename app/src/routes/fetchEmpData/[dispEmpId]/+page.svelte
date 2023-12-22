@@ -1,9 +1,9 @@
 <script>
-    export let data;
+    // export let data;
     // console.log(data)
-    const title = data.title;
-    const empData = data.empData
-    const empId = data.dispEmpId
+    const title = "data.title";
+    const empData =" data.empData"
+    const empId = "data.dispEmpId"
     // const dynamicImgUrl = `../../../../static/assets/emp${empId}`
 </script>
 
