@@ -5,23 +5,24 @@
     const empData = data.empData
     const empId = data.dispEmpId
     // const dynamicImgUrl = `../../../../static/assets/emp${empId}`
-</script>n
+</script>
 
 
 
 <body>
     
     <h1>{title}</h1>
-    <h4 style="text-align:center">Member Profile</h4>
+    <h4 style="text-align:center">Club Meridian Member Details</h4>
     
     <div class="card">
-      <div class="profile-pic"><img src="../../../../public/images/emp1.jpg" alt="ceo"></div>
+      <div><img class="profile-pic" src={`https://drive.google.com/uc?id=1odRCOz9kui1ObEX9OynUTjyWBaWr1C-2`} alt=""></div>
       <h1><span class="h-clr">{empData["Name"]}</span></h1>
       <p class="title">Dob: {empData["Date Of Birth"]}</p>
       <h2>{empData["What is your spouse's name?"]}</h2>
       <p class="discri">(Spouse)</p>
-      <p class="title">Dob: {empData["When is your wedding anniversary?"]}</p>
-      <h4>Address:</h4>
+      <p class="title">Dob: {empData["What is your spouse's date of birth"]}</p><br>
+      <p class="title">Anny: {empData["When is your wedding anniversary?"]}</p>
+      <!-- <h4>Address:</h4> -->
       <p class="discri">{empData["Address"]}</p>
       <!-- <p class="discri">UVA VILLA<br>
     Prafulla Enclave<br>
@@ -29,9 +30,9 @@
     Koteshwar-576222<br>
     Kundapur<br>
     Udupi, Karnataka</p> -->
-    <h4>Phone No and Email ID:</h4>
+    <!-- <h4>Phone No and Email ID:</h4> -->
       <p class="discri">{empData["Phone number"]}<br>
-      </p><p><a href="mailto:ashwamed@gmail.com" target="_newtab" class="txt-01">{empData["Email"]}</a><br>
+      </p><p><a href={empData["Email"]} target="_newtab" class="txt-01">{empData["Email"]}</a><br>
     
     </p><div class="border-b"></div>
     
@@ -56,7 +57,7 @@
 }
 .discri {
   color: grey;
-  font-size: 18px;
+  font-size: 1.2em;
   }
 	.txt-01{
 		font-size: 1em;
@@ -67,15 +68,19 @@
 	.profile-pic {
 		border: 8px solid #ccb8c4;
 		border-radius: 40px;
-		background-image: url("../../../../static/assets/emp1.jpg");
-		height: 262px; width: 200px;
+		/* background-image: url("../../../../static/assets/emp1.jpg"); */
+		height: 100%; width: 100%;
 		background-repeat: no-repeat;
 		margin: auto;
-        width: 25%;
+    width: 25%;
 	}
 	.h-clr{
 		color: #673052;
 	}
+
+  /* .img {
+    z-index: -1;
+  } */
 
 /* button {
   border: none;

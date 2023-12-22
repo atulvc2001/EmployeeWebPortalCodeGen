@@ -13,3 +13,4 @@ export const load = async (serverLoadEvent) => {
         empData
     }
 }
+
