@@ -4,7 +4,7 @@
     // console.log(data.empData)
     const totalEmpData = data.empData // Ensure it's an array
 </script> -->
-<h1>Check.</h1>
+<h1>Check</h1>
 <!-- <h3>{totalEmpData}</h3> -->
 <!-- <h1>Hello there</h1>
 

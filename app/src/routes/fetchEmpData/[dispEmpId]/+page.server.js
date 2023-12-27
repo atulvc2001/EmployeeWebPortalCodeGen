@@ -5,7 +5,7 @@ export const load = async (serverLoadEvent) => {
     const response = await fetch(`http://localhost:4000/employeeData/${dispEmpId}`)
     const empData = await response.json()
 
-    console.log(empData)
+    // console.log(empData)
 
     return {
         dispEmpId,
