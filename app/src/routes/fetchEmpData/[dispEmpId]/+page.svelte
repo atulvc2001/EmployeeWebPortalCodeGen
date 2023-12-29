@@ -3,8 +3,19 @@
     // console.log(data)
     // const title = data.title;
     const {[0]:empData} = data.singleEmpData
-    const photo = empData['Upload your passport size photo (.jpeg or .png)'].replace("open","uc")
-    console.log("hello",photo)
+    const gdrivephotolink = empData['Upload your passport size photo (.jpeg or .png)']
+    const idRegex = /(?:\/d\/|id=|\/uc\?id=)([\w-]+)/;
+    const match = gdrivephotolink.match(idRegex);
+    var fileId;
+    var photo;
+    if (match) {
+      fileId = match[1];
+      // console.log("File ID:", fileId.trim());
+      photo = 'https://drive.google.com/uc?id='+fileId;
+    } else {
+      console.error("Invalid Google Drive link");
+      }
+    console.log("hello", photo)
     const empId = data.dispEmpId
     // const dynamicImgUrl = `../../../../static/assets/emp${empId}`
 </script>
