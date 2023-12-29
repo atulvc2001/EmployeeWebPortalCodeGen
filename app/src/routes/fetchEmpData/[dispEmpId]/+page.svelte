@@ -1,8 +1,10 @@
 <script>
     export let data;
     // console.log(data)
-    const title = data.title;
-    const empData = data.empData
+    // const title = data.title;
+    const {[0]:empData} = data.singleEmpData
+    const photo = empData['Upload your passport size photo (.jpeg or .png)'].replace("open","uc")
+    console.log("hello",photo)
     const empId = data.dispEmpId
     // const dynamicImgUrl = `../../../../static/assets/emp${empId}`
 </script>
@@ -11,30 +13,25 @@
 
 <body>
     
-    <h1>{title}</h1>
+    <h1>empData working</h1>
+    <!-- <h1>{empData.Name}</h1>   -->
     <h4 style="text-align:center">Club Meridian Member Details</h4>
     
     <div class="card">
-      <div><img class="profile-pic" src={`https://drive.google.com/uc?id=1odRCOz9kui1ObEX9OynUTjyWBaWr1C-2`} alt=""></div>
+      <div><img class="profile-pic" src={photo} alt=""></div>
       <h1><span class="h-clr">{empData["Name"]}</span></h1>
       <p class="title">Dob: {empData["Date Of Birth"]}</p>
       <h2>{empData["What is your spouse's name?"]}</h2>
       <p class="discri">(Spouse)</p>
       <p class="title">Dob: {empData["What is your spouse's date of birth"]}</p><br>
-      <p class="title">Anny: {empData["When is your wedding anniversary?"]}</p>
-      <!-- <h4>Address:</h4> -->
+      <p class="title">Anny: {empData["When is your wedding anniversary?"]}</p> 
+      <h4>Address:</h4> 
       <p class="discri">{empData["Address"]}</p>
-      <!-- <p class="discri">UVA VILLA<br>
-    Prafulla Enclave<br>
-    Halady Road<br>
-    Koteshwar-576222<br>
-    Kundapur<br>
-    Udupi, Karnataka</p> -->
-    <!-- <h4>Phone No and Email ID:</h4> -->
-      <p class="discri">{empData["Phone number"]}<br>
-      </p><p><a href={empData["Email"]} target="_newtab" class="txt-01">{empData["Email"]}</a><br>
+
+      <h4>Phone No and Email ID:</h4> 
+      <p class="discri">{empData["Phone number"]}<br></p><p><a href={empData["Email"]} target="_newtab" class="txt-01">{empData["Email"]}</a><br>
     
-    </p><div class="border-b"></div>
+      </p><div class="border-b"></div>
     
     <style src=""></style>
     
