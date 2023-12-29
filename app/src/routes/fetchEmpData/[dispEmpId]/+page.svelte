@@ -23,10 +23,10 @@
       <p class="title">Dob: {empData["Date Of Birth"]}</p>
       <h2>{empData["What is your spouse's name?"]}</h2>
       <p class="discri">(Spouse)</p>
-      <p class="title">Dob: {empData["What is your spouse's date of birth"]}</p><br>
+      <p class="title">Dob: {empData["What is your spouse's date of birth"]}</p>
       <p class="title">Anny: {empData["When is your wedding anniversary?"]}</p> 
       <h4>Address:</h4> 
-      <p class="discri">{empData["Address"]}</p>
+      <p class="discri discri-box">{empData["Address"]}</p>
 
       <h4>Phone No and Email ID:</h4> 
       <p class="discri">{empData["Phone number"]}<br></p><p><a href={empData["Email"]} target="_newtab" class="txt-01">{empData["Email"]}</a><br>
@@ -46,6 +46,11 @@
   text-align: center;
   font-family: arial;
 	padding: 8px;
+}
+
+.discri-box{
+  width:80%;
+  margin:0 auto;
 }
 
 .title {
