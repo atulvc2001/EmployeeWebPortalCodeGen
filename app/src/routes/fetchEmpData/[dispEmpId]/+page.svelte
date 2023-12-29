@@ -1,4 +1,5 @@
 <script>
+    import img from '$lib/images/person.png'
     export let data;
     // console.log(data)
     // const title = data.title;
@@ -14,8 +15,9 @@
       photo = 'https://drive.google.com/uc?id='+fileId;
     } else {
       console.error("Invalid Google Drive link");
+      photo = img;
       }
-    console.log("hello", photo)
+    console.log(empData)
     const empId = data.dispEmpId
     // const dynamicImgUrl = `../../../../static/assets/emp${empId}`
 </script>
@@ -24,12 +26,13 @@
 
 <body>
     
-    <h1>empData working</h1>
+    <!-- <h1>empData working</h1> -->
     <!-- <h1>{empData.Name}</h1>   -->
     <h4 style="text-align:center">Club Meridian Member Details</h4>
     
     <div class="card">
-      <div><img class="profile-pic" src={photo} alt=""></div>
+      <!-- <div class="photo-box"><img class="profile-pic" src={photo} alt=""></div> -->
+      <div class="photo-box"><img class="profile-pic" src={photo} alt=""></div>
       <h1><span class="h-clr">{empData["Name"]}</span></h1>
       <p class="title">Dob: {empData["Date Of Birth"]}</p>
       <h2>{empData["What is your spouse's name?"]}</h2>
@@ -78,14 +81,23 @@
 	.border-b{
 		border-bottom: 8px solid #673052;
 	}
+
+  /* .photo-box{
+    width:193px;
+    height:239px;
+		border: 8px solid #ccb8c4;
+    border-radius: 20px;
+  } */
+
 	.profile-pic {
 		border: 8px solid #ccb8c4;
-		border-radius: 40px;
+		border-radius: 20px;
 		/* background-image: url("../../../../static/assets/emp1.jpg"); */
-		height: 100%; width: 100%;
+		height: 100%; 
 		background-repeat: no-repeat;
 		margin: auto;
     width: 25%;
+    margin-top:30px;
 	}
 	.h-clr{
 		color: #673052;
