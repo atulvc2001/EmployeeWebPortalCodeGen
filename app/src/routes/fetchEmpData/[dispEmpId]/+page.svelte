@@ -34,8 +34,8 @@
       <!-- <div class="photo-box"><img class="profile-pic" src={photo} alt=""></div> -->
       <div class="photo-box"><img class="profile-pic" src={photo} alt=""></div>
       <h1><span class="h-clr">{empData["Name"]}</span></h1>
-      <p class="title">Dob: {empData["Date Of Birth"]}</p>
-      <h2>{empData["What is your spouse's name?"]}</h2>
+      <p class="title">Dob: {empData["DOB"]}</p>
+      <h2>{empData["What is your spouse's name? ( Type \"Unmarried\" if you have not married )"]}</h2>
       <p class="discri">(Spouse)</p>
       <p class="title">Dob: {empData["What is your spouse's date of birth"]}</p>
       <p class="title">Anny: {empData["When is your wedding anniversary?"]}</p> 
@@ -43,7 +43,7 @@
       <p class="discri discri-box">{empData["Address"]}</p>
 
       <h4>Phone No and Email ID:</h4> 
-      <p class="discri">{empData["Phone number"]}<br></p><p><a href={empData["Email"]} target="_newtab" class="txt-01">{empData["Email"]}</a><br>
+      <p class="discri">{empData["Contact No"]}<br></p><p><a href={empData["Email"]} target="_newtab" class="txt-01">{empData["Email"]}</a><br>
     
       </p><div class="border-b"></div>
     
