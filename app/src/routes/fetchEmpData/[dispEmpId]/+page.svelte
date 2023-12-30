@@ -1,5 +1,4 @@
 <script>
-<<<<<<< HEAD
     import img from '$lib/images/person.png'
     export let data;
     // console.log(data)
@@ -18,15 +17,8 @@
       console.error("Invalid Google Drive link");
       photo = img;
       }
-    console.log(empData)
+    // console.log(empData)
     const empId = data.dispEmpId
-=======
-    // export let data;
-    // console.log(data)
-    const title = "data.title";
-    const empData =" data.empData"
-    const empId = "data.dispEmpId"
->>>>>>> 9d6cbdd3f0b2f67d4c54eb7f1a8e0c49e2b1fbc5
     // const dynamicImgUrl = `../../../../static/assets/emp${empId}`
 </script>
 
