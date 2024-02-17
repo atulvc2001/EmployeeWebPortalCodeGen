@@ -35,20 +35,37 @@ export const load = async (serverLoadEvent) => {
 			element['When is your wedding anniversary?'] =
 				element['When is your wedding anniversary?'].split('T')[0];
 		}
+		let nameWithSpaces = element['Name'].trim().split(" ")
+		let name = nameWithSpaces.join("").slice(0,2)
+		// console.log(name)
+		let dates = element['DOB'].split('-')
+		// console.log(element['DOB'])
+		let day = dates[2]
+		let uniqueId = element["LMNo"].split(" ").join("") + "-" + name + day
+		console.log(uniqueId)
+		element['uid'] = uniqueId
 	});
 
 	// if params id is not within the existing id, go to error page
-	if (!(1 <= dispEmpId && dispEmpId <= gsheetEmpDataJson.empsData.length)) {
-		error(404, {
-			message: 'ID Not found'
-		});
-	}
+	// if (!(1 <= dispEmpId && dispEmpId <= gsheetEmpDataJson.empsData.length)) {
+	// 	error(404, {
+	// 		message: 'ID Not found'
+	// 	});
+	// }
+
+	// test
+	console.log(gsheetEmpDataJson.empsData[0])
 
 	// filtering the particular empId from the params
 	const singleEmpData = gsheetEmpDataJson.empsData.filter((emp) => {
-		return emp.id == dispEmpId;
+		return emp.uid == dispEmpId;
 	});
 
+	if (!singleEmpData.length){
+		error(404, {
+				message: 'ID Not found'
+		});
+	}
 
 	// sending the data to the html page
 	return {
