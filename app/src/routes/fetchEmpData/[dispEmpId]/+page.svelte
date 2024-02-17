@@ -1,8 +1,6 @@
 <script>
     import img from '$lib/images/person.png'
     export let data;
-    // console.log(data)
-    // const title = data.title;
     const {[0]:empData} = data.singleEmpData
     const gdrivephotolink = empData['Upload your passport size photo (.jpeg or .png)']
     const idRegex = /(?:\/d\/|id=|\/uc\?id=)([\w-]+)/;
@@ -10,29 +8,30 @@
     var fileId;
     var photo;
     if (match) {
+      console.log(match)
       fileId = match[1];
-      // console.log("File ID:", fileId.trim());
-      photo = 'https://drive.google.com/uc?id='+fileId;
+
+      photo = 'https://drive.google.com/thumbnail?id='+fileId+'&sz=w1000';
     } else {
       console.error("Invalid Google Drive link");
       photo = img;
       }
     // console.log(empData)
     const empId = data.dispEmpId
-    // const dynamicImgUrl = `../../../../static/assets/emp${empId}`
+
 </script>
 
 
 
 <body>
     
-    <!-- <h1>empData working</h1> -->
-    <!-- <h1>{empData.Name}</h1>   -->
+
     <h4 style="text-align:center">Club Meridian Member Details</h4>
-    
+    <img src="" alt="">
     <div class="card">
-      <!-- <div class="photo-box"><img class="profile-pic" src={photo} alt=""></div> -->
-      <div class="photo-box"><img class="profile-pic" src={photo} alt=""></div>
+
+      <div class="lmno">LMNo : {empData["LMNo"]}</div>
+      <div class="photo-box"><img class="profile-pic" src="https://drive.google.com/thumbnail?id=17nwoObgzuJvuPk2ne_ZiDE4DVI2SHg7B&sz=w1000" alt=""></div>
       <h1><span class="h-clr">{empData["Name"]}</span></h1>
       <p class="title">Dob: {empData["DOB"]}</p>
       <h2>{empData["What is your spouse's name? ( Type \"Unmarried\" if you have not married )"]}</h2>
@@ -103,33 +102,12 @@
 		color: #673052;
 	}
 
-  /* .img {
-    z-index: -1;
-  } */
-
-/* button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-} */
 
 a {
   text-decoration: none;
   font-size: 22px;
   color: black;
 }
-
-/* button:hover, a:hover {
-  opacity: 0.7;
-}@charset "UTF-8"; */
-/* CSS Document */
 
 
 </style>
