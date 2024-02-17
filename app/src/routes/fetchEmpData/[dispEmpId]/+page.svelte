@@ -4,15 +4,18 @@
     const {[0]:empData} = data.singleEmpData
     const gdrivephotolink = empData['Upload your passport size photo (.jpeg or .png)']
     const idRegex = /(?:\/d\/|id=|\/uc\?id=)([\w-]+)/;
+    // extracting the google id of the image
     const match = gdrivephotolink.match(idRegex);
     var fileId;
     var photo;
     if (match) {
+      // if match exists, extract the id 
       console.log(match)
       fileId = match[1];
 
       photo = 'https://drive.google.com/thumbnail?id='+fileId+'&sz=w1000';
     } else {
+      // else replace it with a generic image
       console.error("Invalid Google Drive link");
       photo = img;
       }
@@ -80,13 +83,6 @@
 	.border-b{
 		border-bottom: 8px solid #673052;
 	}
-
-  /* .photo-box{
-    width:193px;
-    height:239px;
-		border: 8px solid #ccb8c4;
-    border-radius: 20px;
-  } */
 
 	.profile-pic {
 		border: 8px solid #ccb8c4;
