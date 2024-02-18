@@ -9,12 +9,13 @@ export const load = async (serverLoadEvent) => {
 	// fetching Data from google sheet
 	const response = await fetch(
 		// google script link
-		'https://script.googleusercontent.com/macros/echo?user_content_key=N4S0DZZWFzBA2Pef85_WkLBTPlGgHwXc5t8155h5f9JXrJFMhN72BBZkB2KekI9ldO4ebJoRjXrfwi6pYmFhY5g-Zskmh9_Vm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnNx24ntYM2l6QCyqKGeJP629RHBnorO0RSnOnnVXpyvTeKSFnZL0aA2Tm2_q3MyiHAj6uDaoEwpq4i-2rPmNoWfLhWDRMeZxoQ&lib=MLzBmco8mfQO_WgQrsM53GQh1UrPZ7Gxm'
+		'https://script.google.com/macros/s/AKfycbxHNC1FkicfXqB0TMGfVfoPIydcrtCXvZjXBKGQYG6dx5ShpTewo6VZgPnEv-HPfdsb/exec'
 	);
 	const dataFromGoogleSheet = await response.json();
 	const gsheetEmpDataJson = { empsData: dataFromGoogleSheet };
 	// gsheetEmpDataJson.empsData.push(dataFromGoogleSheet)
 	console.log('This page is from +page.server.js');
+	// console.log(gsheetEmpDataJson.empsData) Test
 
 	// modifying the data to display only the essential parts
 	// such as adding an index for each object and modifying the format of dob's
@@ -42,7 +43,7 @@ export const load = async (serverLoadEvent) => {
 		// console.log(element['DOB'])
 		let day = dates[2]
 		let uniqueId = element["LMNo"].split(" ").join("") + "-" + name + day
-		console.log(uniqueId)
+		// console.log(uniqueId)
 		element['uid'] = uniqueId
 	});
 
@@ -54,7 +55,7 @@ export const load = async (serverLoadEvent) => {
 	// }
 
 	// test
-	console.log(gsheetEmpDataJson.empsData[0])
+	// console.log(gsheetEmpDataJson.empsData[0])
 
 	// filtering the particular empId from the params
 	const singleEmpData = gsheetEmpDataJson.empsData.filter((emp) => {
