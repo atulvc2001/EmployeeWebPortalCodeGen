@@ -19,6 +19,7 @@
       console.error("Invalid Google Drive link");
       photo = img;
       }
+    // "https://drive.google.com/thumbnail?id=17nwoObgzuJvuPk2ne_ZiDE4DVI2SHg7B&sz=w1000" Test image
     // console.log(empData)
     const empId = data.dispEmpId
 
@@ -34,7 +35,7 @@
     <div class="card">
 
       <div class="lmno">LMNo : {empData["LMNo"]}</div>
-      <div class="photo-box"><img class="profile-pic" src="https://drive.google.com/thumbnail?id=17nwoObgzuJvuPk2ne_ZiDE4DVI2SHg7B&sz=w1000" alt=""></div>
+      <div class="photo-box"><img class="profile-pic" src={photo} alt=""></div>
       <h1><span class="h-clr">{empData["Name"]}</span></h1>
       <p class="title">Dob: {empData["DOB"]}</p>
       <h2>{empData["What is your spouse's name? ( Type \"Unmarried\" if you have not married )"]}</h2>
