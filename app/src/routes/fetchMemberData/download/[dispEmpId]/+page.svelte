@@ -11,6 +11,12 @@
 			dispEmpId = data.dispEmpId;
 			URLslug = `https://clubmembership.uvameridian.com/fetchMemberData/${dispEmpId}`;
 		}
+	// 	function getOption() {
+	// 	const selectElement = document.querySelector("#qrformat");
+	// 	const output = selectElement.value;
+	// 	console.log(output)
+	// }
+	// getOption()
 	});
 	// The client side solution would only work if the requested image is NOT blocked by CORS policy.
 	// function to download image and append image to the div block
@@ -23,12 +29,14 @@
 		// To display image
 		img.src = await toDataURL(url);
 		// Check if the image container already has an image
-		const divBlock = document.querySelector('.image');
+		let divBlock = document.querySelector('.image');
 		if (divBlock.firstChild) {
+			showImage = !showImage;
 			// If an image already exists, remove it
 			divBlock.removeChild(divBlock.firstChild);
 		} else {
 			if (qrformats != 'eps') {
+				showImage = !showImage;
 				// If no image exists, append the new image
 				divBlock.appendChild(img);
 				const show_img = document.getElementsByClassName('img__container')[0];
@@ -56,7 +64,7 @@
 
 	async function handlesubmit(e) {
 		console.log('this is the break point!!!!!!!!!');
-		showImage = !showImage;
+		// showImage = !showImage;
 		const { qrformats } = Object.fromEntries(new FormData(e.target).entries());
 
 		console.log(qrformats);
@@ -67,22 +75,46 @@
 		);
 	}
 
+	let qrcode = {
+		btnformat : ""
+	}
+
+	let onChangeFormat = ""
+
+	const onChange = () => {
+		onChangeFormat = qrcode.btnformat
+		console.log(onChangeFormat)
+		if (onChangeFormat == 'eps') {
+			let divBlock = document.querySelector('.image');
+			if (divBlock.firstChild){
+				console.log("hello")
+				divBlock.removeChild(divBlock.firstChild)
+				showImage = !showImage;
+			}
+		} 
+	}
+
 </script>
 
 <body>
 	<div class="container">
 		<div class="container__text">
 			<form on:submit={handlesubmit} action="">
-				<h1>Download QR Code</h1>
+				<h2>Download QR Code</h2>
 				<div class="img__container show__img">
 					<div class="image"></div>
 				</div>
-				<select name="qrformats" id="qrformat">
+				<select name="qrformats" id="qrformat" bind:value={qrcode.btnformat} on:change={onChange}  >
 					<option value="png">png</option>
 					<option value="jpeg">jpeg</option>
 					<option value="eps">eps</option>
 				</select>
-				<button>{!showImage ? 'Remove Image' : 'Display Image'}</button>
+				<button>
+					{#if onChangeFormat == 'eps'}
+					Download Image{:else}
+					{!showImage ? 'Remove Image' : 'Display Image'}
+					{/if}
+				</button>
 			</form>
 		</div>
 	</div>
@@ -100,6 +132,7 @@
 	}
 
 	.container {
+		text-align: center;
 		border: 5px solid;
 		padding: 7px 30px 30px 30px ;
 		box-sizing: border-box;
