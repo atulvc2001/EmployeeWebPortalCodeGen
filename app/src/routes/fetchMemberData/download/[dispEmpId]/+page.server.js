@@ -1,10 +1,17 @@
+import { error } from '@sveltejs/kit';
 
 export const load = async (serverLoadEvent) => {
 
-    const { params } = serverLoadEvent;
-    const { dispEmpId } = params;
+    const { params } = await serverLoadEvent;
+    const { dispEmpId } = await params;
 
-    console.log(dispEmpId)
+    if (dispEmpId.length != 9){
+		error(404, {
+				message: 'ID Not found'
+		});
+	}
+
+    console.log(dispEmpId.length)
 
     return {
         dispEmpId

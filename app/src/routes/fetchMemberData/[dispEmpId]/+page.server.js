@@ -5,7 +5,6 @@ export const load = async (serverLoadEvent) => {
 	const { fetch, params } = serverLoadEvent;
 	const { dispEmpId } = params;
 	// Error Checking block -> to check if the param exists or not
-
 	// fetching Data from google sheet
 	const response = await fetch(
 		// google script link
@@ -46,15 +45,6 @@ export const load = async (serverLoadEvent) => {
 		// console.log(uniqueId)
 		element['uid'] = uniqueId
 	});
-
-	// if params id is not within the existing id, go to error page
-	// if (!(1 <= dispEmpId && dispEmpId <= gsheetEmpDataJson.empsData.length)) {
-	// 	error(404, {
-	// 		message: 'ID Not found'
-	// 	});
-	// }
-
-	// test
 	// console.log(gsheetEmpDataJson.empsData[0])
 
 	// filtering the particular empId from the params
@@ -67,7 +57,6 @@ export const load = async (serverLoadEvent) => {
 				message: 'ID Not found'
 		});
 	}
-
 	// sending the data to the html page
 	return {
 		singleEmpData,
