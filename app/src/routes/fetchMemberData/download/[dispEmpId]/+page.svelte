@@ -33,12 +33,13 @@
 				divBlock.appendChild(img);
 				const show_img = document.getElementsByClassName('img__container')[0];
 				show_img.classList.add('show__img');
+			} else {
+				// download image section
+				a.download = `myImage.${qrformats}`;
+				document.body.appendChild(a);
+				a.click();
+				document.body.removeChild(a);
 			}
-			// download image section
-			a.download = `myImage.${qrformats}`;
-			document.body.appendChild(a);
-			a.click();
-			document.body.removeChild(a);
 		}
 	}
 
@@ -73,6 +74,9 @@
 		<div class="container__text">
 			<form on:submit={handlesubmit} action="">
 				<h1>Download QR Code</h1>
+				<div class="img__container show__img">
+					<div class="image"></div>
+				</div>
 				<select name="qrformats" id="qrformat">
 					<option value="png">png</option>
 					<option value="jpeg">jpeg</option>
@@ -80,9 +84,6 @@
 				</select>
 				<button>{!showImage ? 'Remove Image' : 'Display Image'}</button>
 			</form>
-		</div>
-		<div class="img__container show__img">
-			<div class="image"></div>
 		</div>
 	</div>
 </body>
@@ -100,10 +101,12 @@
 
 	.container {
 		border: 5px solid;
-		padding: 30px;
+		padding: 7px 30px 30px 30px ;
+		box-sizing: border-box;
 	}
 
 	.show__img {
 		margin-top: 30px;
+		margin-bottom: 30px;
 	}
 </style>
