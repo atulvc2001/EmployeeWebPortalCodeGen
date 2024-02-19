@@ -1,12 +1,16 @@
 <script>
+	export let data;
+	const { dispEmpId } = data
+	const URLslug = `https://clubmembership.uvameridian.com/fetchMemberData/${dispEmpId}` 
+	console.log(URLslug)
 	import lion from '$lib/images/lion.jpg';
 
 	// The client side solution would only work if the requested image is NOT blocked by CORS policy.
 
-	async function download(url) {
+	async function download(url,qrformats) {
 		const a = document.createElement('a');
 		a.href = await toDataURL(url);
-		a.download = 'myImage.eps';
+		a.download = `myImage.${qrformats}`;
 		document.body.appendChild(a);
 		a.click();
 		document.body.removeChild(a);
@@ -23,37 +27,21 @@
 	}
 
 	async function handlesubmit(e) {
-		const data = Object.fromEntries(new FormData(e.target).entries());
-		// fetch('https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&amp;size=100x100&format=eps;')
-		// 	.then((response) => response.blob())
-		// 	.then((blob) => {
-		// 		// Process the blob (PNG image data)
-		// 		// For example, create a URL for the blob and display the image
-		// 		const url = URL.createObjectURL(blob);
-		// 		const img = document.createElement('img');
-		// 		img.src = url;
-		// 		document.body.appendChild(img);
-		// 	})
-		// 	.catch((error) => {
-		// 		console.error('Error fetching image:', error);
-		// 	});
-		console.log('Hello');
-		// const responsedata = await response
-		// console.log(responsedata)
+
+		const { qrformats } = Object.fromEntries(new FormData(e.target).entries());
+
+		console.log(qrformats);
+
 		let a = document.createElement('a');
 		a.href = lion;
 		a.setAttribute('download', 'qrCodeImage');
 		download(
-			'https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&amp;size=100x100&format=eps'
+			`https://api.qrserver.com/v1/create-qr-code/?data=${URLslug}&amp;size=600x600&format=${qrformats}`,qrformats
 		);
-		// a.click()
+		
+
 	}
 
-	// const v = document.querySelector("form").addEventListener('submit', (e)=>{
-	//     e.preventDefault()
-	//     const data = Object.fromEntries(new FormData(e.target).entries());
-	//     console.log(data)
-	// })
 </script>
 
 <body>
@@ -68,11 +56,7 @@
 			<button>download</button>
 		</form>
 	</div>
-	<!-- <div>
-        <a href="" download >
-            <img src="https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&amp;size=100x100;" alt="" height="100" download>
-        </a>
-    </div> -->
+
 </body>
 
 <style>
