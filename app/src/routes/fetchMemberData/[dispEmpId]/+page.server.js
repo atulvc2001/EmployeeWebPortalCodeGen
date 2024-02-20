@@ -37,13 +37,11 @@ export const load = async (serverLoadEvent) => {
 		}
 		let nameWithSpaces = element['Name'].trim().split(" ")
 		let name = nameWithSpaces.join("").slice(0,2)
-		// console.log(name)
 		let dates = element['DOB'].split('-')
-		// console.log(element['DOB'])
 		let day = dates[2]
 		let uniqueId = element["LMNo"].split(" ").join("") + "-" + name + day
-		// console.log(uniqueId)
 		element['uid'] = uniqueId
+		// console.log("https://clubmembership.uvameridian.com/fetchMemberData/download/"+uniqueId)
 	});
 	// console.log(gsheetEmpDataJson.empsData[0])
 
