@@ -93,6 +93,7 @@
 	.profile-pic {
 		border: 8px solid #ccb8c4;
 		border-radius: 20px;
+    /* TODO : To create a frame so that all images come in the same size */
 		/* background-image: url("../../../../static/assets/emp1.jpg"); */
 		height: 100%; 
 		background-repeat: no-repeat;

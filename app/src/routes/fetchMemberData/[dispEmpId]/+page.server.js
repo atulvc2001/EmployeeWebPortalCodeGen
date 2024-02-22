@@ -24,7 +24,9 @@ export const load = async (serverLoadEvent) => {
 		let checkDOB = Object.prototype.hasOwnProperty.call(element, 'DOB');
 		if (checkDOB) {
 			element['DOB'] = element['DOB'].split('T')[0];
+			// element['DOB'] = Number(String(element['DOB']).split('-')[2])+1
 		}
+		console.log(element['DOB'], element["Name"])
 		let checkSpouseDOB = Object.prototype.hasOwnProperty.call(
 			element,
 			"What is your spouse's date of birth"
@@ -35,13 +37,15 @@ export const load = async (serverLoadEvent) => {
 			element['When is your wedding anniversary?'] =
 				element['When is your wedding anniversary?'].split('T')[0];
 		}
-		let nameWithSpaces = element['Name'].trim().split(" ")
-		let name = nameWithSpaces.join("").slice(0,2)
+		let nameWithoutSpaces = element['Name'].trim().split(" ")
+		let name = nameWithoutSpaces.join("").slice(0,2)
 		let dates = element['DOB'].split('-')
+		console.log(dates, element['DOB'], element['Name'])
 		let day = dates[2]
 		let uniqueId = element["LMNo"].split(" ").join("") + "-" + name + day
 		element['uid'] = uniqueId
 		// console.log("https://clubmembership.uvameridian.com/fetchMemberData/download/"+uniqueId)
+		console.log(element)
 	});
 	// console.log(gsheetEmpDataJson.empsData[0])
 
