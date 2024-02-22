@@ -13,13 +13,15 @@
       console.log(match)
       fileId = match[1];
 
+      // photo = "https://drive.google.com/thumbnail?id=15djmsIODTPosjemWwsufMRVHfRpjWtq3&sz=w1000"
       photo = 'https://drive.google.com/thumbnail?id='+fileId+'&sz=w1000';
+      // photo = 'https://lh3.googleusercontent.com/d/'+fileId+'&sz=w1000';
     } else {
       // else replace it with a generic image
       console.error("Invalid Google Drive link");
       photo = img;
       }
-    // "https://drive.google.com/thumbnail?id=17nwoObgzuJvuPk2ne_ZiDE4DVI2SHg7B&sz=w1000" Test image
+    // "https://drive.google.com/thumbnail?id=15djmsIODTPosjemWwsufMRVHfRpjWtq3&sz=w1000" Test image
     // console.log(empData)
     const empId = data.dispEmpId
 
@@ -33,18 +35,24 @@
     <h4 style="text-align:center">Club Meridian Member Details</h4>
     <img src="" alt="">
     <div class="card">
-
+      <!-- LMNO number -->
       <div class="lmno">LMNo : {empData["LMNo"]}</div>
-      <div class="photo-box"><img class="profile-pic" src={photo} alt=""></div>
+      <!-- Photo -->
+      <div class="photo-box"><img class="profile-pic" src={photo} alt="" referrerpolicy="no-referrer" ></div>
+      <!-- Name -->
       <h1><span class="h-clr">{empData["Name"]}</span></h1>
+      <!-- DOB -->
       <p class="title">Dob: {empData["DOB"]}</p>
+      <!-- SPOUSE name and DOB -->
       <h2>{empData["What is your spouse's name? ( Type \"Unmarried\" if you have not married )"]}</h2>
       <p class="discri">(Spouse)</p>
       <p class="title">Dob: {empData["What is your spouse's date of birth"]}</p>
+      <!-- Wedding anniversary -->
       <p class="title">Anny: {empData["When is your wedding anniversary?"]}</p> 
+      <!-- Address -->
       <h4>Address:</h4> 
       <p class="discri discri-box">{empData["Address"]}</p>
-
+      <!-- Phone no. and email Id -->
       <h4>Phone No and Email ID:</h4> 
       <p class="discri">{empData["Contact No"]}<br></p><p><a href={empData["Email"]} target="_newtab" class="txt-01">{empData["Email"]}</a><br>
     
