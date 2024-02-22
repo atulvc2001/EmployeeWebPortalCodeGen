@@ -11,12 +11,6 @@
 			dispEmpId = data.dispEmpId;
 			URLslug = `https://clubmembership.uvameridian.com/fetchMemberData/${dispEmpId}`;
 		}
-	// 	function getOption() {
-	// 	const selectElement = document.querySelector("#qrformat");
-	// 	const output = selectElement.value;
-	// 	console.log(output)
-	// }
-	// getOption()
 	});
 	// The client side solution would only work if the requested image is NOT blocked by CORS policy.
 	// function to download image and append image to the div block
@@ -43,7 +37,7 @@
 				show_img.classList.add('show__img');
 			} else {
 				// download image section
-				a.download = `myImage.${qrformats}`;
+				a.download = `qrCode${dispEmpId}.${qrformats}`;
 				document.body.appendChild(a);
 				a.click();
 				document.body.removeChild(a);
@@ -80,7 +74,7 @@
 	}
 
 	let onChangeFormat = ""
-
+	// logic to condition button according to the format 
 	const onChange = () => {
 		onChangeFormat = qrcode.btnformat
 		console.log(onChangeFormat)
@@ -104,12 +98,15 @@
 				<div class="img__container show__img">
 					<div class="image"></div>
 				</div>
-				<select name="qrformats" id="qrformat" bind:value={qrcode.btnformat} on:change={onChange}  >
+				<!-- binding value data to qrcode.btnformat -->
+				<select name="qrformats" id="qrformat" bind:value={qrcode.btnformat} on:change={onChange}  > 
+					<option value="" selected disabled hidden>Choose here</option>
 					<option value="png">png</option>
 					<option value="jpeg">jpeg</option>
 					<option value="eps">eps</option>
 				</select>
 				<button>
+					<!-- button condition according to the image being displayed or not -->
 					{#if onChangeFormat == 'eps'}
 					Download Image{:else}
 					{!showImage ? 'Remove Image' : 'Display Image'}
