@@ -14,7 +14,8 @@ export const load = async (serverLoadEvent) => {
 	const gsheetEmpDataJson = { empsData: dataFromGoogleSheet };
 	// gsheetEmpDataJson.empsData.push(dataFromGoogleSheet)
 	console.log('This page is from +page.server.js');
-	console.log(gsheetEmpDataJson.empsData) 
+	// console.log(gsheetEmpDataJson.empsData) Test
+	console.log("hello") 
 
 	// filtering the particular empId from the params
 	const singleEmpData = gsheetEmpDataJson.empsData.filter((emp) => {
@@ -22,6 +23,8 @@ export const load = async (serverLoadEvent) => {
 		return emp.Timestamp == dispEmpId;
 
 	});
+
+	console.log(singleEmpData)
 
 	// if (!(singleEmpData.length == 9)){
 	// 	error(404, {

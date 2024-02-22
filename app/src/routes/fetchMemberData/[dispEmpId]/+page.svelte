@@ -1,11 +1,14 @@
 <script>
     import img from '$lib/images/person.png'
     export let data;
+    let notMarried = false;
     const {[0]:empData} = data.singleEmpData
     const gdrivephotolink = empData['Upload your passport size photo (.jpeg or .png)']
     const idRegex = /(?:\/d\/|id=|\/uc\?id=)([\w-]+)/;
     // extracting the google id of the image
     const match = gdrivephotolink.match(idRegex);
+    notMarried = empData["What is your spouse's date of birth"] === "NaN/NaN/NaN"
+    console.log(notMarried)
     var fileId;
     var photo;
     if (match) {
@@ -43,12 +46,15 @@
       <h1><span class="h-clr">{empData["Name"]}</span></h1>
       <!-- DOB -->
       <p class="title">Dob: {empData["DOB"]}</p>
-      <!-- SPOUSE name and DOB -->
-      <h2>{empData["What is your spouse's name? ( Type \"Unmarried\" if you have not married )"]}</h2>
-      <p class="discri">(Spouse)</p>
-      <p class="title">Dob: {empData["What is your spouse's date of birth"]}</p>
-      <!-- Wedding anniversary -->
-      <p class="title">Anny: {empData["When is your wedding anniversary?"]}</p> 
+
+      {#if !notMarried}
+        <!-- SPOUSE name and DOB -->
+        <h2>{empData["What is your spouse's name? ( Type \"Unmarried\" if you have not married )"]}</h2>
+        <p class="discri">(Spouse)</p>
+        <p class="title">Dob: {empData["What is your spouse's date of birth"]}</p>
+        <!-- Wedding anniversary -->
+        <p class="title">Anny: {empData["When is your wedding anniversary?"]}</p> 
+      {/if}
       <!-- Address -->
       <h4>Address:</h4> 
       <p class="discri discri-box">{empData["Address"]}</p>
