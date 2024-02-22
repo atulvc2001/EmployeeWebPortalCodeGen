@@ -105,11 +105,11 @@
 					<option value="jpeg">jpeg</option>
 					<option value="eps">eps</option>
 				</select>
-				<button>
+				<button class="qr__button">
 					<!-- button condition according to the image being displayed or not -->
 					{#if onChangeFormat == 'eps'}
 					Download Image{:else}
-					{!showImage ? 'Remove Image' : 'Display Image'}
+					{!showImage ? 'Cancel Image' : 'Display Image'}
 					{/if}
 				</button>
 			</form>
@@ -138,5 +138,11 @@
 	.show__img {
 		margin-top: 30px;
 		margin-bottom: 30px;
+	}
+	.qr__button{
+		padding:10px;
+	}
+	#qrformat{
+		padding:10px;
 	}
 </style>
