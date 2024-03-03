@@ -1,14 +1,18 @@
 <script>
 	import img from '$lib/images/person.png';
 	export let data;
-	let notMarried = false;
+	let spouseDate = false;
+	let annivDate = false;
 	const { [0]: empData } = data.singleEmpData;
 	const gdrivephotolink = empData['Upload your passport size photo (.jpeg or .png)'];
 	const idRegex = /(?:\/d\/|id=|\/uc\?id=)([\w-]+)/;
 	// extracting the google id of the image
 	const match = gdrivephotolink.match(idRegex);
-	notMarried = empData["What is your spouse's date of birth"] === 'NaN/NaN/NaN';
-	console.log(notMarried);
+	// Checking if spouse date, anniversary date and spouse name is present or not in gsheet
+	spouseDate = empData["What is your spouse's date of birth"] === 'NaN/NaN/NaN';
+	annivDate = empData["When is your wedding anniversary?"] === 'NaN/NaN';
+	let noSpouseName = empData['What is your spouse\'s name? ( Type "Unmarried" if you have not married )'] !== "";
+	// console.log(spouseDate);
 	var fileId;
 	var photo;
 	if (match) {
@@ -41,14 +45,18 @@
 		<!-- DOB -->
 		<p class="title">Dob: {empData['DOB']}</p>
 
-		{#if !notMarried}
-			<!-- SPOUSE name and DOB -->
+		<!-- SPOUSE name and DOB -->
+		{#if noSpouseName}
 			<h2>
 				{empData['What is your spouse\'s name? ( Type "Unmarried" if you have not married )']}
 			</h2>
 			<p class="discri">(Spouse)</p>
+		{/if}
+		{#if !spouseDate}
 			<p class="title">Dob: {empData["What is your spouse's date of birth"]}</p>
+		{/if}
 			<!-- Wedding anniversary -->
+		{#if !annivDate}
 			<p class="title">Anny: {empData['When is your wedding anniversary?']}</p>
 		{/if}
 		<!-- Address -->
