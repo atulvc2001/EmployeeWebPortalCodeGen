@@ -9,6 +9,7 @@
 	// extracting the google id of the image
 	const match = gdrivephotolink.match(idRegex);
 	// Checking if spouse date, anniversary date and spouse name is present or not in gsheet
+
 	spouseDate = empData["What is your spouse's date of birth"] === 'NaN/NaN/NaN';
 	annivDate = empData["When is your wedding anniversary?"] === 'NaN/NaN';
 	let noSpouseName = empData['What is your spouse\'s name? ( Type "Unmarried" if you have not married )'] !== "";
@@ -45,7 +46,7 @@
 		<!-- DOB -->
 		<p class="title">Dob: {empData['DOB']}</p>
 
-		<!-- SPOUSE name and DOB -->
+		<!-- SPOUSE name, DOB and Anniversary date chained with a if logic -->
 		{#if noSpouseName}
 			<h2>
 				{empData['What is your spouse\'s name? ( Type "Unmarried" if you have not married )']}
