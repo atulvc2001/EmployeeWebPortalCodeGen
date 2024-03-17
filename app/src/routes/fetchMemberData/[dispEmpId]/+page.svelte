@@ -13,7 +13,6 @@
 	spouseDate = empData["What is your spouse's date of birth"] === 'NaN/NaN/NaN';
 	annivDate = empData["When is your wedding anniversary?"] === 'NaN/NaN';
 	let noSpouseName = empData['What is your spouse\'s name? ( Type "Unmarried" if you have not married )'] !== "";
-	// console.log(spouseDate);
 	var fileId;
 	var photo;
 	if (match) {
