@@ -27,7 +27,7 @@ export const load = async (serverLoadEvent) => {
 	});
 
 	// console.log(singleEmpData) To test
-	// Error Checking
+	// Error Checking by checking singleEmpData array is empty or not
 	if (singleEmpData.length == 0){
 		error(404, {
 				message: 'ID Not found'
