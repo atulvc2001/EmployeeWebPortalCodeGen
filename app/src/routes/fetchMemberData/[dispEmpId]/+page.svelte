@@ -28,6 +28,8 @@
 	// "https://drive.google.com/thumbnail?id=15djmsIODTPosjemWwsufMRVHfRpjWtq3&sz=w1000" Test image
 	// console.log(empData) test
 	const empId = data.dispEmpId;
+	// YSRS members are restricted to Club Meridian Sports and Recreation
+	const isYsrsMember = empId.toUpperCase().includes('YSRS');
 </script>
 
 <body>
@@ -66,6 +68,12 @@
 		<h4>Phone No and Email ID:</h4>
 		<p class="discri">{empData['Contact No']}<br /></p>
 		<p><a href={empData['Email']} target="_newtab" class="txt-01">{empData['Email']}</a><br /></p>
+		<!-- Club restriction note for YSRS members -->
+		{#if isYsrsMember}
+			<p class="validity-note">
+				Valid at Club Meridian Sports and Recreation only. Not valid at affiliated club
+			</p>
+		{/if}
 		<div class="border-b"></div>
 
 		<style src=""></style>
@@ -104,6 +112,11 @@
 	}
 	.border-b {
 		border-bottom: 8px solid #673052;
+	}
+	.validity-note {
+		color: grey;
+		font-size: 0.95em;
+		font-style: italic;
 	}
 
 	.profile-pic {
